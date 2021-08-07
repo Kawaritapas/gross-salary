@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
-public class SwingBasic extends JFrame {
+public class Main extends JFrame {
 
   private String[] department = {
     "IT",
@@ -46,7 +46,8 @@ public class SwingBasic extends JFrame {
     label2.setText(" Department :");
     JComboBox comboBox = new JComboBox();
     int count = 0;
-    for (int i = 0; i < department.length; i++) comboBox.addItem(
+    for (int i = 0; i < department.length; i++) 
+    comboBox.addItem(
       department[count++]
     );
 
@@ -83,6 +84,7 @@ public class SwingBasic extends JFrame {
     //submit
     JButton but = new JButton();
     JButton reset = new JButton();
+    
     but.setText("Submit");
     reset.setText("Reset");
     add(label);
@@ -118,14 +120,17 @@ public class SwingBasic extends JFrame {
               throw new Exception("NameCannotBeBlank");
             }
             double hra = 0.05 * Integer.parseInt(emSalary);
-            double da = 0.6;
-            if (Integer.parseInt(emSalary) >= 25000) {
+            System.out.println("hra: " +hra);
+            System.out.println("basic:" +Integer.parseInt(emSalary));
+            double da = 0.6 * Integer.parseInt(emSalary);
+            if (Integer.parseInt(emSalary) >= 25000 && Integer.parseInt(emSalary)<= 29999) {
               da = 0.7 * Integer.parseInt(emSalary);
-            } else if (Integer.parseInt(emSalary) >= 30000) {
+            } else if (Integer.parseInt(emSalary) >= 30000 &&  Integer.parseInt(emSalary)<= 39999) {
               da = 0.8 * Integer.parseInt(emSalary);
             } else if (Integer.parseInt(emSalary) >= 40000) {
               da = 0.85 * Integer.parseInt(emSalary);
             }
+            System.out.println("da:" +da);
             double grossSalary = Integer.parseInt(emSalary) + da + hra;
             System.out.println(
               employee +
@@ -168,6 +173,6 @@ public class SwingBasic extends JFrame {
   }
 
   public static void main(String args[]) {
-    new SwingBasic().start();
+    new Main().start();
   }
 }
